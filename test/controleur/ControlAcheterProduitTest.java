@@ -55,5 +55,11 @@ class ControlAcheterProduitTest {
 	void testGetQuantiteProduit() {
 		assertEquals(ctrol.getQuantiteProduit(obelix.getNom()), 10);
 	}
+	
+	@Test
+	void testVendeursProduit() {
+		assertEquals(1,ctrol.vendeursProduit("menhir").length);
+		assertNull(ctrol.vendeursProduit("navire"));
+	}
 
 }

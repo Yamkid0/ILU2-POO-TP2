@@ -9,8 +9,8 @@ import personnages.Chef;
 import personnages.Gaulois;
 import villagegaulois.Village;
 
-class ControlTrouverEtalVendeurTest {
-	ControlTrouverEtalVendeur ctrol;
+class ControlVerifierIdentiteTest {
+	ControlVerifierIdentite ctrol;
 	Village village;
 	Chef abraracourcix;
 	Gaulois obelix;
@@ -20,21 +20,21 @@ class ControlTrouverEtalVendeurTest {
 		village = new Village("le village des irréductibles", 10, 1);
 		abraracourcix = new Chef("Abraracourcix", 10, village);
 		village.setChef(abraracourcix);
-		ctrol = new ControlTrouverEtalVendeur(village);
+		ctrol = new ControlVerifierIdentite(village);
 		obelix = new Gaulois("Obélix", 10);
 		village.ajouterHabitant(obelix);
 	}
 	
+	
 	@Test
-	void testControlTrouverEtalVendeur() {
+	void testControlVerifierIdentite() {
 		assertNotNull(ctrol);
 	}
 
 	@Test
-	void testTrouverEtalVendeur() {
-		assertNull(ctrol.trouverEtalVendeur(obelix.getNom()));
-		village.installerVendeur(obelix, "menhir", 10);
-		assertNotNull(ctrol.trouverEtalVendeur(obelix.getNom()));
+	void testVerifierIdentite() {
+		assertTrue(ctrol.verifierIdentite(obelix.getNom()));
+		assertFalse(ctrol.verifierIdentite("Astérix"));
 	}
 
 }
